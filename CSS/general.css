@@ -1,0 +1,280 @@
+/* 
+--- 01 TYPOGRAPHY SYSTEM
+
+- Font sizes(px):
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights:
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line heights:
+Default : 1
+Tittle: 1.05
+Medium: 1.2
+Paragraph: 1.6
+
+- Letter spacing
+letter-spacing: 0.75px;
+letter-spacing: -0.5px;
+
+
+--- 02 COLORS
+
+- Primary: #e67e22
+
+- Tints
+#fdf2e9
+#f3e1cf
+#6f6f6f testimonial names
+#767676
+
+- Shades:#ef711f
+
+- Background:
+#45260a
+
+- Greys:
+#555
+#333
+
+-tag
+#ffd43b
+#51cf66
+#94d82d
+
+--- 05 SHADOWS
+
+--- 06 BORDER-RADIUS
+border-radius 11px
+
+Defautl: 9px;
+--- 07 WHITESPACE
+
+- Spacing system(px):
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  /* 1 rem = 16px, si no se establece un font-size distinto */
+  /* Si se requiere establecer un reset de 1 rem = 10px, se debe aplicar
+  en esta seccion font-size: 10px;, lo que cambiare a 1 rem = 10px */
+  /* El caso anterior es factible, pero provoca problemas en ciertos usuarios,
+  por ende se establece el siguiente hack:
+  Si se quiere establecer 10px ----> 10px / 16px = 0.625 == 62.5% */
+  font-size: 62.5%;
+  /*  SOLO FUNCIONA SI LOS ELEMENTOS SE COMPLEMENTAN ACORDE A LA POSICION RELATIVA Y ABSOLITA  */
+  overflow-x: hidden;
+
+  /* Movimiento de interaccion dentro de la pagina sea mas suave, se trabaja al final , en detalles */
+  /* No funciona con safari ni IE */
+  /* scroll-behavior: smooth; */
+}
+body {
+  font-family: "Rubik", sans-serif;
+  color: #555;
+  line-height: 1;
+  font-weight: 400;
+  /*  SOLO FUNCIONA SI LOS ELEMENTOS SE COMPLEMENTAN ACORDE A LA POSICION RELATIVA Y ABSOLITA  */
+  overflow-x: hidden;
+}
+
+/*----------------------------------------*/
+/*-------GENERAL RE-USED COMPONENT--------*/
+/*----------------------------------------*/
+.container {
+  /* convencion de uso 1140 px o 1200px */
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.grid {
+  display: grid;
+  row-gap: 9.6rem;
+  column-gap: 6.4rem;
+  grid-template-columns: repeat(2, 1fr);
+
+  margin-bottom: 9.6rem;
+}
+
+/* .grid:last-child {
+  margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+  margin-bottom: 9.6rem;
+}
+
+.grid .grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center {
+  align-items: center;
+}
+/* Se agrupan los elementos de titulos con propiedades que prevelazcan o sea comunes */
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+.subheading {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ef711f;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.75px;
+}
+.btn,
+.btn:link,
+.btn:visited {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 1.6rem 3.2rem;
+  border-radius: 0.9rem;
+  display: inline-block;
+  text-decoration: none;
+
+  /* animacion del elemento
+  ALL todas las propiedades se animan
+  si fuera una sola, se detalla en vez de ALL */
+  transition: all 0.3s;
+
+  /* for de last buttom "sign up now */
+}
+/* buton de formulario */
+.btn--form {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #45260aec;
+  color: #fdf2e9;
+  align-self: end;
+  padding: 1.2rem;
+}
+.btn--form:hover {
+  background-color: #fff;
+  color: #555;
+}
+.btn--primary:link,
+.btn--primary:visited {
+  background-color: #e67e22;
+}
+
+.btn--primary:hover,
+.btn--primary:active {
+  background-color: #ef711f;
+}
+
+.btn--secondary:link,
+.btn--secondary:visited {
+  background-color: #fff;
+  color: #555;
+}
+.btn--secondary:hover,
+.btn--secondary:active {
+  background-color: transparent;
+  color: #555;
+
+  /* truco para setear el borde dentro del elemento */
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* esta es una clase de ayuda, para aplicar valores a un elemento especifico */
+
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: #e67e22;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: all 0.3s;
+}
+.link:hover,
+.link:active {
+  color: #ef711f;
+  border-bottom: 1px solid transparent;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  line-height: 1.2;
+}
+.list-item {
+  font-size: 1.8rem;
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+.list-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #ef711f;
+}
+
+/* CLASES DE AYUDA O DE ARREGLO DE PROPIEDADES */
+
+.padding-bottom-md {
+  padding-bottom: 0 !important;
+}
+
+.margin-right-sm {
+  margin-right: 1.6rem !important;
+}
+.margin-bottom-md {
+  margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+  text-align: center;
+}
+strong {
+  font-weight: 600;
+  color: #333;
+}
